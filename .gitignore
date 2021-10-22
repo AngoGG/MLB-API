@@ -1,0 +1,10 @@
+.vscode/
+venv/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+.coverage
+htmlcov/
+.env
+mypy.report
+*.sqlite3
