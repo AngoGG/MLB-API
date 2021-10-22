@@ -45,6 +45,6 @@ class Api:
             'sportId': '1',
             'date': f'{month}/{day}/{year}',
         }
-        url = f'{self.base_url}/schedule/games/'
+        url = f'{self.base_url}/api/v1/schedule/games/'
 
         return self._request(url, payloads)
