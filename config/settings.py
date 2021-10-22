@@ -45,6 +45,7 @@ INSTALLED_APPS: list[str] = [
     'django.contrib.staticfiles',
     'apps.core',
     'apps.api',
+    'apps.mlb',
 ]
 
 MIDDLEWARE = [
