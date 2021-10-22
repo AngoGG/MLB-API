@@ -31,3 +31,20 @@ class Api:
             Dict: A Dictionary containing the requests Response.
         """
         return requests.get(url, params=payloads).json()
+
+    def get_date_games(self, day: int, month: int, year: int) -> Dict:
+        '''Get all the games informations for a given date.
+        Args:
+            date (str): The date for which the games informations are expected
+
+        Returns:
+            Dict: A Dictionary containing the informations for all matchs on the given date.
+        '''
+
+        payloads: Dict = {
+            'sportId': '1',
+            'date': f'{month}/{day}/{year}',
+        }
+        url = f'{self.base_url}/schedule/games/'
+
+        return self._request(url, payloads)
