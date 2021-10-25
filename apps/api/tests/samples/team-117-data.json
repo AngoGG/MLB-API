@@ -1,52 +1,47 @@
 {
-    "copyright": "Copyright 2021 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
-    "teams": [
-        {
-            "abbreviation": "HOU",
-            "active": true,
-            "allStarStatus": "N",
-            "clubName": "Astros",
-            "division": {
-                "id": 200,
-                "link": "/api/v1/divisions/200",
-                "name": "American League West"
-            },
-            "fileCode": "hou",
-            "firstYearOfPlay": "1962",
-            "franchiseName": "Houston",
-            "id": 117,
-            "league": {
-                "id": 103,
-                "link": "/api/v1/league/103",
-                "name": "American League"
-            },
-            "link": "/api/v1/teams/117",
-            "locationName": "Houston",
-            "name": "Houston Astros",
-            "season": 2021,
-            "shortName": "Houston",
-            "sport": {
-                "id": 1,
-                "link": "/api/v1/sports/1",
-                "name": "Major League Baseball"
-            },
-            "springLeague": {
-                "abbreviation": "GL",
-                "id": 115,
-                "link": "/api/v1/league/115",
-                "name": "Grapefruit League"
-            },
-            "springVenue": {
-                "id": 5000,
-                "link": "/api/v1/venues/5000"
-            },
-            "teamCode": "hou",
-            "teamName": "Astros",
-            "venue": {
-                "id": 2392,
-                "link": "/api/v1/venues/2392",
-                "name": "Minute Maid Park"
-            }
-        }
-    ]
+    "abbreviation": "HOU",
+    "active": true,
+    "allStarStatus": "N",
+    "clubName": "Astros",
+    "division": {
+        "id": 200,
+        "link": "/api/v1/divisions/200",
+        "name": "American League West"
+    },
+    "fileCode": "hou",
+    "firstYearOfPlay": "1962",
+    "franchiseName": "Houston",
+    "id": 117,
+    "league": {
+        "id": 103,
+        "link": "/api/v1/league/103",
+        "name": "American League"
+    },
+    "link": "/api/v1/teams/117",
+    "locationName": "Houston",
+    "name": "Houston Astros",
+    "season": 2021,
+    "shortName": "Houston",
+    "sport": {
+        "id": 1,
+        "link": "/api/v1/sports/1",
+        "name": "Major League Baseball"
+    },
+    "springLeague": {
+        "abbreviation": "GL",
+        "id": 115,
+        "link": "/api/v1/league/115",
+        "name": "Grapefruit League"
+    },
+    "springVenue": {
+        "id": 5000,
+        "link": "/api/v1/venues/5000"
+    },
+    "teamCode": "hou",
+    "teamName": "Astros",
+    "venue": {
+        "id": 2392,
+        "link": "/api/v1/venues/2392",
+        "name": "Minute Maid Park"
+    }
 }
