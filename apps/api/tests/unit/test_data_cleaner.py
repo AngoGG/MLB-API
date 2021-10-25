@@ -18,6 +18,25 @@ from config.settings import BASE_DIR
 class TestDataCleaner:
     """DataCleaner test class"""
 
+    def test_game_data(self) -> None:
+
+        expected_result = {
+            "game_pk": 660900,
+            "official_date": "2021-10-20",
+            "home_team": 111,
+            "away_team": 117,
+            "winner_team": 117,
+            "home_score": 1,
+            "away_score": 9,
+        }
+
+        game_data: Dict[str, Any] = json.loads(
+            Path(BASE_DIR.joinpath('apps/api/tests/samples/game-data.json')).read_text()
+        )
+        print(game_data)
+
+        assert DataCleaner.get_game_data(game_data) == expected_result
+
     def test_team_data(self) -> None:
 
         expected_result = {

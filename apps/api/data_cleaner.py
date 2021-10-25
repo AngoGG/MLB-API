@@ -13,7 +13,8 @@ from typing import Any, Dict, List
 class DataCleaner:
     """Manages the retrieval of game data from the API for integration."""
 
-    def get_game_data(self, game: Dict[str, Any]) -> Dict[str, Dict]:
+    @staticmethod
+    def get_game_data(game_data: Dict[str, Any]) -> Dict[str, Any]:
         '''From a Game API response data, retrieves need data to fill the database.
 
         Args:
