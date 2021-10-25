@@ -34,10 +34,9 @@ class Game(models.Model):
     winner_team: models.ForeignKey = models.ForeignKey(
         Team, verbose_name="Vainqueur du match", on_delete=models.CASCADE
     )
-    home_score: models.IntegerField = models.models.IntegerField(
+    home_score: models.IntegerField = models.IntegerField(
         verbose_name="Score de l'équipe à domicile"
     )
-    away_score: models.IntegerField = models.models.IntegerField(
+    away_score: models.IntegerField = models.IntegerField(
         verbose_name="Score de l'équipe à l'éxtérieur"
     )
-
