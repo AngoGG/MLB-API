@@ -1,0 +1,78 @@
+{
+    "games": {
+        "calendarEventID": "14-660900-2021-10-20",
+        "content": {
+            "link": "/api/v1/game/660900/content"
+        },
+        "dayNight": "night",
+        "description": "ALCS Game 5",
+        "doubleHeader": "N",
+        "gameDate": "2021-10-20T21:08:00Z",
+        "gameNumber": 1,
+        "gamePk": 660900,
+        "gameType": "L",
+        "gamedayType": "P",
+        "gamesInSeries": 7,
+        "ifNecessary": "N",
+        "ifNecessaryDescription": "Normal Game",
+        "isTie": false,
+        "link": "/api/v1.1/game/660900/feed/live",
+        "officialDate": "2021-10-20",
+        "publicFacing": true,
+        "recordSource": "S",
+        "reverseHomeAwayStatus": false,
+        "scheduledInnings": 9,
+        "season": "2021",
+        "seasonDisplay": "2021",
+        "seriesDescription": "League Championship Series",
+        "seriesGameNumber": 5,
+        "status": {
+            "abstractGameCode": "F",
+            "abstractGameState": "Final",
+            "codedGameState": "F",
+            "detailedState": "Final",
+            "startTimeTBD": false,
+            "statusCode": "F"
+        },
+        "teams": {
+            "away": {
+                "isWinner": true,
+                "leagueRecord": {
+                    "losses": 2,
+                    "pct": ".600",
+                    "wins": 3
+                },
+                "score": 9,
+                "seriesNumber": 1,
+                "splitSquad": false,
+                "team": {
+                    "id": 117,
+                    "link": "/api/v1/teams/117",
+                    "name": "Houston Astros"
+                }
+            },
+            "home": {
+                "isWinner": false,
+                "leagueRecord": {
+                    "losses": 3,
+                    "pct": ".400",
+                    "wins": 2
+                },
+                "score": 1,
+                "seriesNumber": 1,
+                "splitSquad": false,
+                "team": {
+                    "id": 111,
+                    "link": "/api/v1/teams/111",
+                    "name": "Boston Red Sox"
+                }
+            }
+        },
+        "tiebreaker": "N",
+        "venue": {
+            "id": 3,
+            "link": "/api/v1/venues/3",
+            "name": "Fenway Park"
+        }
+    }
+}
