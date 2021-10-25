@@ -26,14 +26,23 @@ class DataCleaner:
 
     @staticmethod
     def get_team_data(team_data: Dict[str, Any]) -> Dict[str, Any]:
-        '''Method Description.
-        Description details here (if needed).
+        '''From a MLB Team response API, retrieves and return data needed.
 
         Args:
-            name (type): Description. Default to False.
+            team_data (Dict[str, Any]): MLB response API for a Team.
 
         Raises:
         Returns:
+            Dict : A dictionnary containing all need team data.
         '''
 
-        pass
+        return {
+            "id": team_data['teams'][0]['id'],
+            "name": team_data['teams'][0]['name'],
+            "team_name": team_data['teams'][0]['teamName'],
+            "location_name": team_data['teams'][0]['locationName'],
+            "abbreviation": team_data['teams'][0]['abbreviation'],
+            "link": team_data['teams'][0]['link'],
+            "team_code": team_data['teams'][0]['teamCode'],
+            "team_league": team_data['teams'][0]['league']['name'],
+        }
