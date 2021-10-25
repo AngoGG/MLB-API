@@ -11,17 +11,29 @@ from typing import Any, Dict, List
 
 
 class DataCleaner:
-    """Manages the retrieval of game data from the API for integration.
-
-    """
+    """Manages the retrieval of game data from the API for integration."""
 
     def get_game_data(self, game: Dict[str, Any]) -> Dict[str, Dict]:
         '''From a Game API response data, retrieves need data to fill the database.
-        
+
         Args:
             game (Dict[str, Any]): Dictionnary containing all API game data.
 
         Returns:
             Dict : A dictionnary containing all game and teams informations.
         '''
+        pass
+
+    @staticmethod
+    def get_team_data(team_data: Dict[str, Any]) -> Dict[str, Any]:
+        '''Method Description.
+        Description details here (if needed).
+
+        Args:
+            name (type): Description. Default to False.
+
+        Raises:
+        Returns:
+        '''
+
         pass
