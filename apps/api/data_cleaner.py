@@ -7,7 +7,7 @@
 @note    0.0.1 (2021-10-25) : Init file
 '''
 
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 
 class DataCleaner:
@@ -23,7 +23,21 @@ class DataCleaner:
         Returns:
             Dict : A dictionnary containing all game and teams informations.
         '''
-        pass
+
+        if game_data['teams']['home']['isWinner'] is True:
+            winner_team = game_data['teams']['home']['team']['id']
+        else:
+            winner_team = game_data['teams']['away']['team']['id']
+
+        return {
+            "game_pk": game_data['gamePk'],
+            "official_date": game_data['officialDate'],
+            "home_team": game_data['teams']['home']['team']['id'],
+            "away_team": game_data['teams']['away']['team']['id'],
+            "winner_team": winner_team,
+            "home_score": game_data['teams']['home']['score'],
+            "away_score": game_data['teams']['away']['score'],
+        }
 
     @staticmethod
     def get_team_data(team_data: Dict[str, Any]) -> Dict[str, Any]:

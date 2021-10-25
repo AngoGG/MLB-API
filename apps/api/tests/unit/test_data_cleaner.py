@@ -33,7 +33,6 @@ class TestDataCleaner:
         game_data: Dict[str, Any] = json.loads(
             Path(BASE_DIR.joinpath('apps/api/tests/samples/game-data.json')).read_text()
         )
-        print(game_data)
 
         assert DataCleaner.get_game_data(game_data) == expected_result
 
