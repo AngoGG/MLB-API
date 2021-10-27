@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict
 
-from apps.api.data_cleaner import DataCleaner
+from apps.mlb.utils import DataCleaner
 from config.settings import BASE_DIR
 
 
@@ -31,7 +31,7 @@ class TestDataCleaner:
         }
 
         game_data: Dict[str, Any] = json.loads(
-            Path(BASE_DIR.joinpath('apps/api/tests/samples/game-data.json')).read_text()
+            Path(BASE_DIR.joinpath('apps/mlb/tests/samples/game-data.json')).read_text()
         )
 
         assert DataCleaner.get_game_data(game_data) == expected_result
@@ -51,7 +51,7 @@ class TestDataCleaner:
 
         team_data: Dict[str, Any] = json.loads(
             Path(
-                BASE_DIR.joinpath('apps/api/tests/samples/team-117-data.json')
+                BASE_DIR.joinpath('apps/mlb/tests/samples/team-117-data.json')
             ).read_text()
         )
 

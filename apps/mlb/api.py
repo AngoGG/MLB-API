@@ -12,7 +12,7 @@ from os import environ
 from typing import Dict
 
 
-class Api:
+class Client:
     '''Api class.
     Manages interactions with MLB API
 

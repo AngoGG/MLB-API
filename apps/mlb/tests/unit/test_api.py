@@ -10,7 +10,7 @@
 import json
 from pathlib import Path
 
-from apps.api.api import Api
+from apps.mlb.api import Client
 from config.settings import BASE_DIR
 from pytest_mock import mocker
 
@@ -30,7 +30,7 @@ class TestApi:
         '''
         expected_result = json.loads(
             Path(
-                BASE_DIR.joinpath('apps/api/tests/samples/mbl-date-response-data.json')
+                BASE_DIR.joinpath('apps/mlb/tests/samples/mbl-date-response-data.json')
             ).read_text()
         )
 
@@ -39,11 +39,11 @@ class TestApi:
             return_value=json.loads(
                 Path(
                     BASE_DIR.joinpath(
-                        'apps/api/tests/samples/mbl-date-response-data.json'
+                        'apps/mlb/tests/samples/mbl-date-response-data.json'
                     )
                 ).read_text()
             ),
         )
 
-        api: Api = Api()
+        api: Client = Client()
         assert api.get_date_games(20, 10, 2021) == expected_result
