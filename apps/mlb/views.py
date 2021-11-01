@@ -55,9 +55,9 @@ class GetDateGames(View):
 
             games.append(
                 {
-                    'game_info': game_infos,
+                    'game_infos': game_infos,
                     'teams_infos': [home_team_infos, away_team_infos],
-                }
+                },
             )
 
         return JsonResponse({'games': games})

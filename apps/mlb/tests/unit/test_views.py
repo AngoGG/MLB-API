@@ -13,6 +13,7 @@ from typing import Any, Dict
 from config.settings import BASE_DIR
 from django.http import HttpResponse
 from django.test import Client
+from django.utils.encoding import force_text
 from pytest_mock import mocker
 
 
@@ -83,4 +84,4 @@ class TestGetDateGamesView:
         )
 
         assert response.status_code == 200
-        assert response.content == expected_result
+        assert json.loads(force_text(response.content)) == expected_result
