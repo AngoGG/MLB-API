@@ -1,7 +1,7 @@
 from django import forms
 
 
-class DesiredGamesDate(forms.Form):
+class DesiredGamesDateForm(forms.Form):
     date = forms.DateTimeField(
         label="Date désirée",
         widget=forms.DateInput(
