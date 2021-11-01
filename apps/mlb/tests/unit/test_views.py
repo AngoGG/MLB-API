@@ -7,7 +7,7 @@
 @note    0.0.1 (2021-11-01) : Init file
 '''
 import json
-import pytest
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
 
@@ -30,7 +30,10 @@ class TestGetDateGamesView(TestCase):
         assert response.status_code == 200
         self.assertTemplateUsed(response, "mlb/get_game_from_date.html")
 
-    @pytest.mark.skip(reason="Refactoring, and @pytest.mark.current_dev not working")
+
+class TestGetDateGamesView:
+    """DataCleaner test class"""
+
     def test_get_game_data(self, mocker: mocker) -> None:
         expected_result = {
             'games': [
@@ -90,8 +93,11 @@ class TestGetDateGamesView(TestCase):
         )
 
         client: Client = Client()
-        response: HttpResponse = client.get(
-            f"/games/?day=20&month=10&year=2021",
+        response: HttpResponse = client.post(
+            f"/games/",
+            {
+                "date": [datetime.now()],
+            },
         )
 
         assert response.status_code == 200

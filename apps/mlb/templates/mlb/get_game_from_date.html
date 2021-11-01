@@ -1,6 +1,5 @@
 <form method="POST" action="{% url "get_games" %}">
     {% csrf_token %}
-    <label for="date">Date désirée: </label>
-    <input id="date" type="date" name="date" required>
+    {{ form }}
     <button type="submit" >Récupérer Matchs Cours</button>
 </form>

@@ -23,33 +23,31 @@ class GetDateGames(View):
         Returns:
             Dict: A Dictionary containing games and teams informations.
         '''
+        form = DesiredGamesDateForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data['date']
 
-        # Will now take params from Django form
-        day = request.GET['day']
-        month = request.GET['month']
-        year = request.GET['year']
+            mlb_api: Client = Client()
+            data = mlb_api.get_date_games(date.day, date.month, date.year)
 
-        mlb_api: Client = Client()
-        data = mlb_api.get_date_games(day, month, year)
+            data_cleaner: DataCleaner = DataCleaner()
 
-        data_cleaner: DataCleaner = DataCleaner()
+            games = []
+            for game in data['dates'][0]['games']:
+                game_infos = data_cleaner.get_game_data(game)
 
-        games = []
-        for game in data['dates'][0]['games']:
-            game_infos = data_cleaner.get_game_data(game)
+                home_team_infos = data_cleaner.get_team_data(
+                    mlb_api.get_team_info(game_infos['home_team'])
+                )
+                away_team_infos = data_cleaner.get_team_data(
+                    mlb_api.get_team_info(game_infos['away_team'])
+                )
 
-            home_team_infos = data_cleaner.get_team_data(
-                mlb_api.get_team_info(game_infos['home_team'])
-            )
-            away_team_infos = data_cleaner.get_team_data(
-                mlb_api.get_team_info(game_infos['away_team'])
-            )
+                games.append(
+                    {
+                        'game_infos': game_infos,
+                        'teams_infos': [home_team_infos, away_team_infos],
+                    },
+                )
 
-            games.append(
-                {
-                    'game_infos': game_infos,
-                    'teams_infos': [home_team_infos, away_team_infos],
-                },
-            )
-
-        return JsonResponse({'games': games})
+            return JsonResponse({'games': games})
