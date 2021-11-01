@@ -25,7 +25,7 @@ class Client:
         ...
         self.base_url: str = environ['MLB_BASE_URL']
 
-    def _request(self, url: str, payloads=Dict) -> Dict:
+    def _request(self, url: str, payloads: Dict = None) -> Dict:
         """Query the Api and get the response.
         Returns:
             Dict: A Dictionary containing the requests Response.
@@ -48,3 +48,14 @@ class Client:
         url = f'{self.base_url}/api/v1/schedule/games/'
 
         return self._request(url, payloads)
+
+    def get_team_info(self, team_id: int) -> Dict:
+        '''Get all informations for a given team.
+        Args:
+            team_id (int): The MLB team ID.
+
+        Returns:
+            Dict: A Dictionary containing the informations for the given team.
+        '''
+
+        pass

@@ -47,3 +47,32 @@ class TestApi:
 
         api: Client = Client()
         assert api.get_date_games(20, 10, 2021) == expected_result
+
+    def test_get_team_info(self, mocker: mocker) -> None:
+        '''Method Description.
+        Description details here (if needed).
+
+        Args:
+            name (type): Description. Default to False.
+
+        Raises:
+        Returns:
+        '''
+
+        expected_result = json.loads(
+            Path(
+                BASE_DIR.joinpath('apps/mlb/tests/samples/team-117-data.json')
+            ).read_text()
+        )
+
+        mocker.patch(
+            'requests.Response.json',
+            return_value=json.loads(
+                Path(
+                    BASE_DIR.joinpath('apps/mlb/tests/samples/team-117-data.json')
+                ).read_text()
+            ),
+        )
+
+        api: Client = Client()
+        assert api.get_team_info(117) == expected_result
