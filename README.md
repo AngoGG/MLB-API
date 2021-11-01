@@ -29,3 +29,8 @@ et requêter l'URL
 https://statsapi.mlb.com/api/v1/teams/111
 
 L'objectif *in fine* sera de pouvoir récupérer les matchs soit par date, soit par équipe, soit par league.
+
+# Bugs connus et améliorations à venir
+
+- Erreur si aucun match ne ressort pour la date donnée.
+- Erreur si un match n'a pas encore été joué (pas de vainqueur)
