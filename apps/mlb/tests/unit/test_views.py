@@ -23,7 +23,7 @@ class TestGetDateGamesView:
         expected_result = {
             'games': [
                 {
-                    'games_infos': {
+                    'game_infos': {
                         "game_pk": 660900,
                         "official_date": "2021-10-20",
                         "home_team": 111,
@@ -59,12 +59,20 @@ class TestGetDateGamesView:
         }
 
         mocker.patch(
-            'requests.Response.json',
+            'apps.mlb.api.Client.get_date_games',
             return_value=json.loads(
                 Path(
                     BASE_DIR.joinpath(
                         'apps/mlb/tests/samples/mbl-date-response-data.json'
                     )
+                ).read_text()
+            ),
+        )
+        mocker.patch(
+            'apps.mlb.api.Client.get_team_info',
+            return_value=json.loads(
+                Path(
+                    BASE_DIR.joinpath('apps/mlb/tests/samples/team-117-data.json')
                 ).read_text()
             ),
         )
