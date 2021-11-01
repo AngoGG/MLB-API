@@ -52,12 +52,12 @@ class DataCleaner:
         '''
 
         return {
-            "id": team_data['id'],
-            "name": team_data['name'],
-            "team_name": team_data['teamName'],
-            "location_name": team_data['locationName'],
-            "abbreviation": team_data['abbreviation'],
-            "link": team_data['link'],
-            "team_code": team_data['teamCode'],
-            "team_league": team_data['league']['name'],
+            "id": team_data['teams'][0]['id'],
+            "name": team_data['teams'][0]['name'],
+            "team_name": team_data['teams'][0]['teamName'],
+            "location_name": team_data['teams'][0]['locationName'],
+            "abbreviation": team_data['teams'][0]['abbreviation'],
+            "link": team_data['teams'][0]['link'],
+            "team_code": team_data['teams'][0]['teamCode'],
+            "team_league": team_data['teams'][0]['league']['name'],
         }
