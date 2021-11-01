@@ -1,31 +1,22 @@
-from django.http import HttpRequest, JsonResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.shortcuts import render
 from django.views.generic import View
+
 from apps.mlb.api import Client
 from apps.mlb.utils import DataCleaner
 
-# Create your views here.
 
-
-def check_sprinkle_rights(request: HttpRequest) -> HttpRequest:
-
-    day = request.GET['day']
-    month = request.GET['month']
-    year = request.GET['year']
-
-    mlb_api: Client = Client()
-    data = mlb_api.get_date_games(day, month, year)
-
-    games = []
-    for game in data['dates'][0]['games']:
-        games.append(game)
-
-    print(games)
-
-    return JsonResponse({'games': games})
+from .forms import DesiredGamesDateForm
 
 
 class GetDateGames(View):
-    def get(self, request):
+    def get(self, request: HttpRequest) -> HttpResponse:
+        '''Displays an HTML page with a form allowing to choose the retrieval date for MLB games.'''
+        return render(
+            request, "mlb/get_game_from_date.html", {"form": DesiredGamesDateForm()}
+        )
+
+    def post(self, request: HttpRequest) -> JsonResponse:
         '''Returns all the games informations with its
         involved teams from a date given in parameters
 
@@ -33,6 +24,7 @@ class GetDateGames(View):
             Dict: A Dictionary containing games and teams informations.
         '''
 
+        # Will now take params from Django form
         day = request.GET['day']
         month = request.GET['month']
         year = request.GET['year']
