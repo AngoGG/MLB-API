@@ -58,4 +58,6 @@ class Client:
             Dict: A Dictionary containing the informations for the given team.
         '''
 
-        pass
+        url = f'{self.base_url}/api/v1/teams/{team_id}'
+
+        return self._request(url)
