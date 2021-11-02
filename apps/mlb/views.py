@@ -33,21 +33,24 @@ class GetDateGames(View):
             data_cleaner: DataCleaner = DataCleaner()
 
             games = []
-            for game in data['dates'][0]['games']:
-                game_infos = data_cleaner.get_game_data(game)
+            try:
+                for game in data['dates'][0]['games']:
+                    game_infos = data_cleaner.get_game_data(game)
 
-                home_team_infos = data_cleaner.get_team_data(
-                    mlb_api.get_team_info(game_infos['home_team'])
-                )
-                away_team_infos = data_cleaner.get_team_data(
-                    mlb_api.get_team_info(game_infos['away_team'])
-                )
+                    home_team_infos = data_cleaner.get_team_data(
+                        mlb_api.get_team_info(game_infos['home_team'])
+                    )
+                    away_team_infos = data_cleaner.get_team_data(
+                        mlb_api.get_team_info(game_infos['away_team'])
+                    )
 
-                games.append(
-                    {
-                        'game_infos': game_infos,
-                        'teams_infos': [home_team_infos, away_team_infos],
-                    },
-                )
+                    games.append(
+                        {
+                            'game_infos': game_infos,
+                            'teams_infos': [home_team_infos, away_team_infos],
+                        },
+                    )
+                    return JsonResponse({'games': games})
 
-            return JsonResponse({'games': games})
+            except IndexError:
+                return HttpResponse('Aucune partie ce jour')
