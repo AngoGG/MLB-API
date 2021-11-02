@@ -24,19 +24,22 @@ class DataCleaner:
             Dict : A dictionnary containing all game and teams informations.
         '''
 
-        if game_data['teams']['home']['isWinner'] is True:
+        try:
             winner_team = game_data['teams']['home']['team']['id']
-        else:
-            winner_team = game_data['teams']['away']['team']['id']
-
+            home_score = game_data['teams']['home']['score']
+            away_score = game_data['teams']['away']['score']
+        except KeyError:
+            winner_team = None
+            home_score = None
+            away_score = None
         return {
             "game_pk": game_data['gamePk'],
             "official_date": game_data['officialDate'],
             "home_team": game_data['teams']['home']['team']['id'],
             "away_team": game_data['teams']['away']['team']['id'],
             "winner_team": winner_team,
-            "home_score": game_data['teams']['home']['score'],
-            "away_score": game_data['teams']['away']['score'],
+            "home_score": home_score,
+            "away_score": away_score,
         }
 
     @staticmethod

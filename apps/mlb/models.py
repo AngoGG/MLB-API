@@ -52,6 +52,8 @@ class Game(models.Model):
         verbose_name="Vainqueur du match",
         related_name="winner_team",
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
     home_score: models.IntegerField = models.IntegerField(
         verbose_name="Score de l'équipe à domicile"
