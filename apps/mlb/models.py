@@ -22,8 +22,8 @@ class Team(models.Model):
     link: models.CharField = models.CharField(
         verbose_name="Route de l'équipe dans l'API MLB", max_length=255
     )
-    team_code: models.IntegerField = models.IntegerField(
-        verbose_name="Team Code de l'équipe"
+    team_code: models.IntegerField = models.CharField(
+        verbose_name="Team Code de l'équipe", max_length=255
     )
     team_league: models.CharField = models.CharField(
         verbose_name="League de l'équipe", max_length=255
