@@ -26,21 +26,31 @@ class DataCleaner:
 
         try:
             winner_team = game_data['teams']['home']['team']['id']
-            home_score = game_data['teams']['home']['score']
-            away_score = game_data['teams']['away']['score']
+
+            if game_data['teams']['home']['team']['id'] is True:
+                winner_team = game_data['teams']['home']['team']['id']
+            else:
+                winner_team = game_data['teams']['away']['team']['id']
+
+            return {
+                "game_pk": game_data['gamePk'],
+                "official_date": game_data['officialDate'],
+                "home_team": game_data['teams']['home']['team']['id'],
+                "away_team": game_data['teams']['away']['team']['id'],
+                "winner_team": winner_team,
+                "home_score": game_data['teams']['home']['score'],
+                "away_score": game_data['teams']['away']['score'],
+            }
         except KeyError:
-            winner_team = None
-            home_score = None
-            away_score = None
-        return {
-            "game_pk": game_data['gamePk'],
-            "official_date": game_data['officialDate'],
-            "home_team": game_data['teams']['home']['team']['id'],
-            "away_team": game_data['teams']['away']['team']['id'],
-            "winner_team": winner_team,
-            "home_score": home_score,
-            "away_score": away_score,
-        }
+            return {
+                "game_pk": game_data['gamePk'],
+                "official_date": game_data['officialDate'],
+                "home_team": game_data['teams']['home']['team']['id'],
+                "away_team": game_data['teams']['away']['team']['id'],
+                "winner_team": None,
+                "home_score": None,
+                "away_score": None,
+            }
 
     @staticmethod
     def get_team_data(team_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -64,3 +74,9 @@ class DataCleaner:
             "team_code": team_data['teams'][0]['teamCode'],
             "team_league": team_data['teams'][0]['league']['name'],
         }
+
+
+class FeedDatabase:
+    def update_game(self, game: Dict) -> None:
+        '''Update database with game infos'''
+        pass
