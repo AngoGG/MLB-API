@@ -9,6 +9,9 @@
 
 from typing import Any, Dict
 
+from django.db.models.query import QuerySet
+from .models import Game, Team
+
 
 class DataCleaner:
     """Manages the retrieval of game data from the API for integration."""
@@ -77,6 +80,12 @@ class DataCleaner:
 
 
 class FeedDatabase:
-    def update_game(self, game: Dict) -> None:
+    def update_game(
+        self, game_data: Dict, home_team: QuerySet, away_team: QuerySet
+    ) -> None:
         '''Update database with game infos'''
+        pass
+
+    def update_team(self, team_data: Dict) -> None:
+        '''Update database with team infos'''
         pass
