@@ -88,4 +88,5 @@ class FeedDatabase:
 
     def update_team(self, team_data: Dict) -> None:
         '''Update database with team infos'''
-        pass
+        team, created = Team.objects.update_or_create(**team_data)
+        return team

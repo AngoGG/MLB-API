@@ -7,7 +7,7 @@
 @note    0.0.1 (2021-11-02) : Init file
 '''
 import pytest
-from apps.mlb.models import Game
+from apps.mlb.models import Game, Team
 from apps.mlb.utils import FeedDatabase
 from django.db.models.query import QuerySet
 
@@ -49,7 +49,8 @@ class TestFeedDatabase:
         }
 
         feed_database: FeedDatabase = FeedDatabase()
-        feed_database.update_team(team_data)
-        team_info: QuerySet = Game.objects.first()
+        team = feed_database.update_team(team_data)
+        team_info: QuerySet = Team.objects.first()
 
-        assert team_info.name == "Houston Astros"
+        assert team_info.id == 117
+        assert team.id == 117
