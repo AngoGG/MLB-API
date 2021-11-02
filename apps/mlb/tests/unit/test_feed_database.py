@@ -27,7 +27,7 @@ class TestFeedDatabase:
             "home_score": 1,
             "away_score": 9,
         }
-        home_team_data = {
+        away_team_data = {
             "id": 117,
             "name": "Houston Astros",
             "team_name": "Astros",
@@ -37,7 +37,7 @@ class TestFeedDatabase:
             "team_code": "hou",
             "team_league": "American League",
         }
-        away_team_data = {
+        home_team_data = {
             "id": 111,
             "name": "Boston Red Sox",
             "team_name": "Red Sox",
@@ -51,10 +51,13 @@ class TestFeedDatabase:
         feed_database: FeedDatabase = FeedDatabase()
         home_team = Team.objects.create(**home_team_data)
         away_team = Team.objects.create(**away_team_data)
-        feed_database.update_game(game_data, home_team, away_team)
+        feed_database.update_game(game_data)
         game_created: QuerySet = Game.objects.first()
 
         assert game_created.game_pk == 660900
+        assert game_created.home_team == home_team
+        assert game_created.away_team == away_team
+        assert game_created.winner_team == away_team
 
     @pytest.mark.django_db(transaction=True)
     def test_update_team(self) -> None:

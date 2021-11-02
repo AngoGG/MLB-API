@@ -80,11 +80,20 @@ class DataCleaner:
 
 
 class FeedDatabase:
-    def update_game(
-        self, game_data: Dict, home_team: QuerySet, away_team: QuerySet
-    ) -> None:
+    def update_game(self, game_data: Dict) -> None:
         '''Update database with game infos'''
-        pass
+        home_team = Team.objects.get(id=game_data['home_team'])
+        away_team = Team.objects.get(id=game_data['away_team'])
+        winner_team = Team.objects.get(id=game_data['winner_team'])
+        Game.objects.create(
+            game_pk=game_data['game_pk'],
+            official_date=game_data['official_date'],
+            home_score=game_data['home_score'],
+            away_score=game_data['away_score'],
+            home_team=home_team,
+            away_team=away_team,
+            winner_team=winner_team,
+        )
 
     def update_team(self, team_data: Dict) -> None:
         '''Update database with team infos'''
